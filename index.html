@@ -108,7 +108,9 @@
   }
   function deleteLast() {
   	if (display.value.length > 1 && display.value !== "Error") {
-  		display.value = "0";
+  		display.value = display.value.slice(0, -1);
+  	} else {
+  	  display.value = "0";
   	}
   }
 
