@@ -98,20 +98,24 @@
   }
   function appendOperator(op) {
   if (display.value === "") return;
+  if (op === '%') {
+  	try {
+ 	display.value = eval(display.value) / 100 ;
+     } catch (error) {
+     display.value = "Error";
+    }
+    return;
+  }
    display.value += op;
   }
   function calculate() {
   	try{
-   let equation = display.value;
-   if (equation.includes('%')) {
-   	equation = equation.replace(/%/g, '/100');
+   display.value = eval(display.value);   
+       } catch (error) {
+        display.value = "Error";
+      }
    }
-    display.value = eval(display.value);
-  	} catch (error) {
-  	  display.value = "Error";
-  	}
-  }
-  function deleteLast() {
+   function deleteLast() {
   	if (display.value.length > 1 && display.value !== "Error") {
   		display.value = display.value.slice(0, -1);
   	} else {
