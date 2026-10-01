@@ -13,13 +13,13 @@
   <button class="btn clear" onclick="clearScreen()">C</button>
   <button class="btn special" onclick="appendOperator('%')">%</button>
   <button class="btn special" onclick="deleteLast()">⌫</button>
-  <button class="btn operator" onclick="appendOperator('÷')">÷</button>
+  <button class="btn operator" onclick="appendOperator('/')">÷</button>
 
 
   <button class="btn number" onclick="appendNumber('7')">7</button>
   <button class="btn number" onclick="appendNumber('8')">8</button>
   <button class="btn number" onclick="appendNumber('9')">9</button>
-  <button class="btn operator" onclick="appendOperator('x')">x</button>
+  <button class="btn operator" onclick="appendOperator('*')">x</button>
 
   
   <button class="btn number" onclick="appendNumber('4')">4</button>
@@ -115,12 +115,26 @@
   function appendOperator(op) {
   if (display.value === "") return;
   resetOnNextInput = false;
-  
-   display.value += op;
+
+  if (op === '*') {
+  	display.value += 'x';
+  } else if (op === '/') {
+  	display.value += '÷';
+  } else {
+
+  	display.value += op;
+   }
   }
+  
   function calculate() {
   	try{
   	let equation = display.value;
+    if (equation.includes('x')) {
+    	equation = equation.replace(/x/g, '*');
+    }
+    if (equation,includes(÷)) {
+    	equation = equation.replace(/÷/g, '/');
+    }
   	if (equation.includes('%')) {
   		equation = equation.replace(/%/g, '/100')
   	}
