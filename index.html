@@ -42,7 +42,7 @@
 
   </div>
   
- <style>
+<style>
   body {
   	display: flex;
   	justify-content: center;
@@ -80,9 +80,9 @@
  	gap: 12px;
   }
  
- </style>
+</style>
 
- <script>
+<script>
 
   let display = document.getElementById('display');
   let resetOnNextInput = false;
@@ -107,10 +107,10 @@
   function calculate() {
   	try{
   	let equation = display.value;
-  	if (equation,includes('%')) {
+  	if (equation.includes('%')) {
   		equation = equation.replace(/%/g, '/100')
   	}
-   display.value = eval(display.value);   
+   display.value = eval(equation);   
    resetOnNextInput = true;
        } catch (error) {
         display.value = "Error";
@@ -123,10 +123,8 @@
   	  display.value = "";
   	}
   }
+</script>
 
- </script>
-
- 
 </body>
 </html>
   
