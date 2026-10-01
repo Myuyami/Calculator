@@ -106,8 +106,10 @@
   	  display.value = "Error";
   	}
   }
-  function appendOperator(op) {
-  	display.value += op;
+  function deleteLast() {
+  	if (display.value.length > 1 && display.value !== "Error") {
+  		display.value = "0";
+  	}
   }
 
  </script>
