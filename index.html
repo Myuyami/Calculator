@@ -7,7 +7,7 @@
 </head>
 <body>
   <div  class="calculator">
-  <input type="text" id="display" readonly value="0">
+  <input type="text" id="display" readonly value="">
 
   <div class="button-grid">
   <button class="btn clear" onclick="clearScreen()">C</button>
@@ -113,7 +113,7 @@
  	display.value = "";
   }
   function appendOperator(op) {
-  if (display.value === "") return;
+  if (display.value === "" || display.value === "Error") return;
   resetOnNextInput = false;
 
   if (op === '*') {
@@ -132,7 +132,7 @@
  
      equation = equation.replaceAll('x', '*');
      equation = equation.replaceAll('÷', '/');
-     equation = equation.replaceAll('%', '/100')
+     equation = equation.replaceAll('%', '/100');
 
      display.value = eval(equation);   
      resetOnNextInput = true;
