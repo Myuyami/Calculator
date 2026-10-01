@@ -85,10 +85,12 @@
  <script>
 
   let display = document.getElementById('display');
+  let resetOnNextInput = false;
 
   function appendNumber (num) {
-   if (display.value === "") {
+   if (display.value === "" || display.value === "Error" || resetOnNextInput) {
   	display.value = num;
+    resetOnNextInput = false;
    } else {
   	display.value += num;
    }
@@ -98,9 +100,12 @@
   }
   function appendOperator(op) {
   if (display.value === "") return;
+  resetOnNextInput = false;
+  
   if (op === '%') {
   	try {
  	display.value = eval(display.value) / 100 ;
+ 	resetOnNextInput = true;
      } catch (error) {
      display.value = "Error";
     }
@@ -111,6 +116,7 @@
   function calculate() {
   	try{
    display.value = eval(display.value);   
+   resetOnNextInput = true;
        } catch (error) {
         display.value = "Error";
       }
