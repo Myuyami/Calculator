@@ -87,21 +87,26 @@
   let display = document.getElementById('display');
 
   function appendNumber (num) {
-   if (display.value === "0") {
+   if (display.value === "") {
   	display.value = num;
    } else {
   	display.value += num;
    }
   }
   function clearScreen() {
- 	display.value = "0";
+ 	display.value = "";
   }
   function appendOperator(op) {
-  	display.value += op;
+  if (display.value === "") return;
+   display.value += op;
   }
   function calculate() {
   	try{
-  	  display.value = eval(display.value);
+   let equation = display.value;
+   if (equation.includes('%')) {
+   	equation = equation.replace(/%/g, '/100');
+   }
+    display.value = eval(display.value);
   	} catch (error) {
   	  display.value = "Error";
   	}
@@ -110,7 +115,7 @@
   	if (display.value.length > 1 && display.value !== "Error") {
   		display.value = display.value.slice(0, -1);
   	} else {
-  	  display.value = "0";
+  	  display.value = "";
   	}
   }
 
