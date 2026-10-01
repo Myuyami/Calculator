@@ -129,17 +129,13 @@
   function calculate() {
   	try{
   	let equation = display.value;
-    if (equation.includes('x')) {
-    	equation = equation.replace(/x/g, '*');
-    }
-    if (equation,includes(÷)) {
-    	equation = equation.replace(/÷/g, '/');
-    }
-  	if (equation.includes('%')) {
-  		equation = equation.replace(/%/g, '/100')
-  	}
-   display.value = eval(equation);   
-   resetOnNextInput = true;
+ 
+     equation = equation.replaceAll('x', '*');
+     equation = equation.replaceAll('÷', '/');
+     equation = equation.replaceAll('%', '/100')
+
+     display.value = eval(equation);   
+     resetOnNextInput = true;
        } catch (error) {
         display.value = "Error";
       }
